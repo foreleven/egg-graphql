@@ -18,14 +18,14 @@ module.exports = (_, app) => {
         if (options.onPreGraphiQL) {
           await options.onPreGraphiQL(ctx);
         }
-        return graphiqlKoa({
+        await graphiqlKoa({
           endpointURL: graphQLRouter,
         })(ctx);
       }
       if (options.onPreGraphQL) {
         await options.onPreGraphQL(ctx);
       }
-      return graphqlKoa({
+      await graphqlKoa({
         schema: app.schema,
         context: ctx,
       })(ctx);
